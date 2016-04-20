@@ -35,23 +35,9 @@ public class MainActivity extends AppCompatActivity {
                 String results = "Results: ";
                 int temp = 0;
 
-                // Check temperature range
-                try {
-                    temp = Integer.parseInt(edit_temp.getText().toString());
-                }
-                catch (Exception ex) {  }
-                if (edit_temp.getText().length() == 0) {
-                    edit_temp.setError("Enter a #");
-                    results += "Oops! Something is missing.";
-                }
-                else if (temp < -50 || temp > 50) {
-                    edit_temp.setError("Out of range");
-                    results += "Temperature range needs to be between -50 " +
-                            "and 50 degrees fahrenheit.";
-                }
-                else {
-                    results += "\nTemperature: " + edit_temp.getText() + "\n";
-                }
+                
+
+
                 text_results.setText(results);
             }
         });
