@@ -35,9 +35,6 @@ public class MainActivity extends AppCompatActivity {
                 String results = "Results: ";
                 int temp = 0;
 
-                
-
-
                 text_results.setText(results);
             }
         });
