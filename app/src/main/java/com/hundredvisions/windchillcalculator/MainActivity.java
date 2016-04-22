@@ -34,7 +34,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String results = "Results: ";
                 int temp = 0;
-
+                if (Model.isEmpty(edit_temp)) {
+                    results += "Temperature is empty.";
+                }
+                else {
+                    results += "Temperature is NOT empty.";
+                }
+                try {
+                    results += Model.checkRange(edit_wind, "wind", -50, 50);
+                }
+                catch (IllegalArgumentException iae) {
+                    results += "\n" + iae.getMessage();
+                }
                 text_results.setText(results);
             }
         });
