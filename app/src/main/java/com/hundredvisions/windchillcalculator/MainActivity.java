@@ -34,13 +34,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String results = "Results: ";
                 int temp = 0;
-                if (Model.isValidWind(edit_wind)) {
-                    results += "Wind is valid.";
+                // Check whether Temp is valid or not
+                if (Model.isTempValid(edit_temp)) {
+                    results += "Temperature field is valid.";
                 }
                 else {
-                    results += "Wind is not valid.";
+                    results += "Temperature field is NOT valid.";
                 }
-
+                if (Model.isWindValid(edit_wind)) {
+                    results += "\nWind field is valid.";
+                }
+                else {
+                    results += "\nWind field is NOT valid.";
+                }
                 text_results.setText(results);
             }
         });

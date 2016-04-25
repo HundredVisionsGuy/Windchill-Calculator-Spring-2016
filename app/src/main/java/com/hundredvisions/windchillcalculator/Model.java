@@ -6,10 +6,10 @@ import android.widget.EditText;
  * Created by winikkc on 4/21/2016.
  */
 public class Model {
-    static int upperWindRange = 109;
-    static int lowerWindRange = 4;
-    static int upperTempRange = 50;
-    static int lowerTempRange = -50;
+    private static int lowerTempRange = -50;
+    private static int upperTempRange = 50;
+    private static int lowerWindRange =  4;
+    private static int upperWindRange = 109;
 
     public static boolean isEmpty(EditText field) {
         if (field.length() == 0) {
@@ -19,46 +19,52 @@ public class Model {
             return false;
         }
     }
-    public static String checkRange(EditText field, String field_name,
-                                    int lower, int upper) {
-        String results = "";
-        String field_string = field.getText().toString();
-        try {
-            int data = Integer.parseInt(field_string);
-            if (data < lower || data > upper) {
-                String error_msg;
-                error_msg = field_name + " field is out of range (" +
-                lower + "..." + upper + ")!";
-                results = error_msg;
-            }
-        }
-        catch (Exception e) {
-            return e.getMessage();
-        }
-        return results;
-    }
-    public static boolean inRange(int data, int lower, int upper) {
-        boolean results = false;
+    public static boolean isInRange(int data, int lower, int upper) {
         if (data >= lower && data <= upper) {
-            results = true;
+            return true;
         }
-        return results;
+        else {
+            return false;
+        }
     }
-    public static boolean isValidWind(EditText windfield) {
-        int data;
-        if (!isEmpty(windfield)) {
+    public static boolean isWindValid(EditText field) {
+        if (isEmpty(field)) {
+            return false;
+        }
+        else {
             try {
-                data = Integer.parseInt(windfield.getText().toString());
-                if (inRange(data, lowerWindRange, upperWindRange)) {
+                int data = Integer.parseInt(field.getText().toString());
+                if (isInRange(data, lowerWindRange, upperWindRange)) {
                     return true;
                 }
-                else return false;
-
+                else {
+                    return false;
+                }
             }
             catch (Exception e) {
                 return false;
             }
         }
-        return false;
+    }
+    public static boolean isTempValid(EditText field) {
+        if (isEmpty(field)) {
+            return false;
+        }
+        else {
+            // try to parse the field to an integer
+            try {
+                int data = Integer.parseInt(field.getText().toString());
+                // Check to make sure it's in range
+                if (isInRange(data, lowerTempRange, upperTempRange)) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            catch (Exception e) {
+                return false;
+            }
+        }
     }
 }

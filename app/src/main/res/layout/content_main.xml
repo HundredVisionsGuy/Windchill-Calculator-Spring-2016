@@ -49,7 +49,7 @@
                 android:hint="@string/edit_hint_wind_speed"
                 android:id="@+id/edit_wind"
                 android:ems="6"
-                android:maxLength="2"
+                android:maxLength="3"
                 android:inputType="number"
                 android:layout_marginLeft="10dp"/>
 
