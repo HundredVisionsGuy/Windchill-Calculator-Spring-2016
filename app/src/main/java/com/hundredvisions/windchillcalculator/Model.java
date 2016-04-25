@@ -6,6 +6,11 @@ import android.widget.EditText;
  * Created by winikkc on 4/21/2016.
  */
 public class Model {
+    static int upperWindRange = 109;
+    static int lowerWindRange = 4;
+    static int upperTempRange = 50;
+    static int lowerTempRange = -50;
+
     public static boolean isEmpty(EditText field) {
         if (field.length() == 0) {
             return true;
@@ -31,5 +36,29 @@ public class Model {
             return e.getMessage();
         }
         return results;
+    }
+    public static boolean inRange(int data, int lower, int upper) {
+        boolean results = false;
+        if (data >= lower && data <= upper) {
+            results = true;
+        }
+        return results;
+    }
+    public static boolean isValidWind(EditText windfield) {
+        int data;
+        if (!isEmpty(windfield)) {
+            try {
+                data = Integer.parseInt(windfield.getText().toString());
+                if (inRange(data, lowerWindRange, upperWindRange)) {
+                    return true;
+                }
+                else return false;
+
+            }
+            catch (Exception e) {
+                return false;
+            }
+        }
+        return false;
     }
 }
