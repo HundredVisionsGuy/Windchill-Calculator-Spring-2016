@@ -1,6 +1,8 @@
 package com.hundredvisions.windchillcalculator;
 
+import android.content.Context;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Created by winikkc on 4/21/2016.
@@ -39,7 +41,8 @@ public class Model {
                     return true;
                 }
                 else {
-                    field.setError("Must be within " + lowerWindRange + " & " + upperWindRange +
+                    field.setError("Wind must be within " + lowerWindRange + " & " +
+                            upperWindRange +
                             ".");
                     return false;
                 }
@@ -63,7 +66,8 @@ public class Model {
                     return true;
                 }
                 else {
-                    field.setError("Must be within " + lowerTempRange + " & " + upperTempRange +
+                    field.setError("Temperature must be within " + lowerTempRange + " & " +
+                            upperTempRange +
                             ".");
                     return false;
                 }
