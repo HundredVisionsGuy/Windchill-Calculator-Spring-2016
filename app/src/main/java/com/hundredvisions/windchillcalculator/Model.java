@@ -29,6 +29,7 @@ public class Model {
     }
     public static boolean isWindValid(EditText field) {
         if (isEmpty(field)) {
+            field.setError("field is empty!");
             return false;
         }
         else {
@@ -38,6 +39,8 @@ public class Model {
                     return true;
                 }
                 else {
+                    field.setError("Must be within " + lowerWindRange + " & " + upperWindRange +
+                            ".");
                     return false;
                 }
             }
@@ -48,6 +51,7 @@ public class Model {
     }
     public static boolean isTempValid(EditText field) {
         if (isEmpty(field)) {
+            field.setError("field is empty!");
             return false;
         }
         else {
@@ -59,6 +63,8 @@ public class Model {
                     return true;
                 }
                 else {
+                    field.setError("Must be within " + lowerTempRange + " & " + upperTempRange +
+                            ".");
                     return false;
                 }
             }
