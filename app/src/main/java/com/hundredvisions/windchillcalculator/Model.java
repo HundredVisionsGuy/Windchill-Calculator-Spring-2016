@@ -30,8 +30,8 @@ public class Model {
         }
     }
     public static boolean isWindValid(EditText field) {
-        if (isEmpty(field)) {
-            field.setError("field is empty!");
+        if(isEmpty(field)) {
+            field.setError("You must enter a number");
             return false;
         }
         else {
@@ -41,20 +41,20 @@ public class Model {
                     return true;
                 }
                 else {
-                    field.setError("Wind must be within " + lowerWindRange + " & " +
-                            upperWindRange +
-                            ".");
+                    field.setError("Wind must be between " + lowerWindRange +
+                    " & " + upperWindRange + ".");
                     return false;
                 }
             }
             catch (Exception e) {
+                field.setError("You must enter a number (not character)");
                 return false;
             }
         }
     }
     public static boolean isTempValid(EditText field) {
         if (isEmpty(field)) {
-            field.setError("field is empty!");
+            field.setError("You must enter a number");
             return false;
         }
         else {
@@ -66,13 +66,13 @@ public class Model {
                     return true;
                 }
                 else {
-                    field.setError("Temperature must be within " + lowerTempRange + " & " +
-                            upperTempRange +
-                            ".");
+                    field.setError("Temp must be between " + lowerTempRange +
+                    " & " + upperTempRange + ".");
                     return false;
                 }
             }
             catch (Exception e) {
+                field.setError("Entry must be a number (not character)");
                 return false;
             }
         }

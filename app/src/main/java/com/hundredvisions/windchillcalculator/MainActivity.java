@@ -42,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
                     results += "Temperature field is NOT valid.";
                 }
                 if (Model.isWindValid(edit_wind)) {
-                    results += "\nWind field is valid.";
+                    results += "\nWind is valid";
                 }
                 else {
-                    results += "\nWind field is NOT valid.";
+                    results += "\nWind is NOT valid";
                 }
                 text_results.setText(results);
             }
