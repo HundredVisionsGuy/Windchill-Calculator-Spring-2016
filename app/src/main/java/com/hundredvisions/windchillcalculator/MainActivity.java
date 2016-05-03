@@ -32,21 +32,7 @@ public class MainActivity extends AppCompatActivity {
         button_get_windchill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String results = "Results: ";
-                int temp = 0;
-                // Check whether Temp is valid or not
-                if (Model.isTempValid(edit_temp)) {
-                    results += "Temperature field is valid.";
-                }
-                else {
-                    results += "Temperature field is NOT valid.";
-                }
-                if (Model.isWindValid(edit_wind)) {
-                    results += "\nWind is valid";
-                }
-                else {
-                    results += "\nWind is NOT valid";
-                }
+                String results = Model.calculateWindChill(edit_wind, edit_temp);
                 text_results.setText(results);
             }
         });

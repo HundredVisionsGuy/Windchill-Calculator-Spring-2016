@@ -13,6 +13,7 @@ public class Model {
     private static int lowerWindRange =  4;
     private static int upperWindRange = 109;
 
+    /* Form Validation Methods */
     public static boolean isEmpty(EditText field) {
         if (field.length() == 0) {
             return true;
@@ -76,5 +77,23 @@ public class Model {
                 return false;
             }
         }
+    }
+
+    // Calculate Windchill
+    public static String calculateWindChill(EditText editWind, EditText editTemp) {
+        String results = "Results: ";
+        if (isWindValid(editWind) && isTempValid(editTemp)) {
+            double wind = Double.parseDouble(editWind.getText().toString());
+            int temp = Integer.parseInt(editTemp.getText().toString());
+            // Formula: 35.74 + 0.6215 * temp - 35.75 * (wind^0.16) + 0.4275 * temp * (wind^0.16)
+            double windchill = 35.74 + 0.6215 * temp - 35.75 * Math.pow(wind,0.16) +
+                    0.4275 * temp * Math.pow(wind, 0.16);
+            results += "with a temperature of " + temp + " and a windspeed of " + (int) wind +
+                    ", it feels like " + Math.round(windchill) + " degrees.";
+        }
+        else {
+            results += "there was a problem with your inputs.";
+        }
+        return results;
     }
 }
